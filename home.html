@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAPA</title>
+    <link rel="stylesheet" href="/acapa-inmuebles/Styles/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+   <header>
+        <div class="container-home-logo">
+            <a href="/acapa-inmuebles/home.html"><img src="/acapa-inmuebles/assets/icons/ACAPA_IMB_LOGO.png" alt="Logo ACAPA" height="94" class="home-logo"></a>
+            
+        </div>
+        <nav class="nav-bar">
+            <div class="bar-apartment"><a href="#">APARTAMENTOS</a></div>
+            <div class="bar-line1"></div>
+            <div class="bar-home"><a href="#">CASAS</a></div>
+            <div class="bar-line2"></div>
+            <div class="bar-me"><a href="#">CERCA DE MI</a></div>
+            <div class="bar-line3"></div>
+            <div class="bar-outstanding"><a href="#">DESTACADOS</a></div>
+            <div class="bar-line4"></div>
+            <div class="bar-new"><a href="#">¡LO MAS NUEVO!</a></div>
+        </nav>
+    
+    </header>
+    <div class="slider-and-search">
+        <div class="slider-frame">
+            <div class="slider--inner">
+                <img src="/acapa-inmuebles/assets/images/Bogota-Imagen-1.jpg" alt="Imagen 1">
+                <img src="/acapa-inmuebles/assets/images/Bogota-Imagen-2.jpg" alt="Imagen 2">
+                <img src="/acapa-inmuebles/assets/images/Bogota-Imagen-3.jpg" alt="Imagen 3">
+                <img src="/acapa-inmuebles/assets/images/Bogota-Imagen-4.jpg" alt="Imagen 4">
+            </div>
+        
+        </div>
+        <div class="bar-search">
+            <select class="select-1">
+                <option value="" selected disabled>¿Que Buscas?</option>
+                <option value="opcion1">Casa</option>
+                <option value="opcion2">Apartamento</option>
+                <option disabled>¡Muy pronto más opciones!!</option>
+            </select>
+
+            <div class="bar-line-search"></div>
+        
+            <select class="select-2">
+                <option value="" selected disabled>¿Donde?
+                </option>
+                <option value="opcion1">Bogota</option>
+                <option class="prox" disabled>¡Muy pronto más opciones!!</option>
+            </select>
+            
+            <div class="img-inner">
+                <a href="#"><img src="/acapa-inmuebles/assets/icons/magnifying-glass-icon.png" alt="logo de busqueda" height="35.6"></a>
+            </div>
+        </div>
+    </div>
+   
+  
+   <hr style="text-decoration: solid; border: solid 2px;">
+   
+   
+   <div class="features">
+
+        <div class="feature-search">
+            <img src="/acapa-inmuebles/assets/icons/home-search-icon.png" alt="Buscar" height="66">
+            <h3>BUSCA ARRENDAMIENTOS CERCA DE TI</h3>
+        </div>
+
+        <div class="feature-line-1"></div>
+
+        <div class="feature-house">
+            <img src="/acapa-inmuebles/assets/icons/home-house-icon.png" alt="Casa" height="66">
+            <h3>BUSCA TU CASA SOÑADA</h3>
+        </div>
+
+        <div class="feature-line-2"></div>
+
+        <div class="feature-up-down">
+            <img src="/acapa-inmuebles/assets/icons/home-up-down-icon.png" alt="Propiedad" height="66">
+            <h3>¿ERES PROPIETARIO? PUBLICA TUS PROPIEDADES</h3>
+        </div>
+
+        <div class="feature-line-3"></div>
+
+        <div class="feature-chat">
+            <img src="/acapa-inmuebles/assets/icons/home-chat-icon.png" alt="Chat" height="66">
+            <h3>CHATEA CON EXPERTOS</h3>
+        </div>
+
+        <div class="feature-line-4"></div>
+        
+        <div class="feature-user">
+            <img src="/acapa-inmuebles/assets/icons/home-users-icon.png" alt="Usuarios" height="66">
+            <h3>INTERACTUA CON MAS USUARIOS Y COMPARTE OPINIONES</h3>
+        </div>
+   </div>
+
+   <script>
+        const sliderInner = document.querySelector('.slider--inner');
+        let currentSlide = 0;
+
+        function goToSlide(slide) {
+            sliderInner.style.transform = `translateX(-${slide * 100}%)`;
+            currentSlide = slide;
+        }
+
+        setInterval(() => {
+            goToSlide((currentSlide + 1) % 4);
+        }, 5000);
+    </script>
+</body>
+</html>

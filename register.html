@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="/acapa-inmuebles/Styles/styles.css">
+</head>
+<body>
+    <script>
+        function checkInput(input) {
+          if (input.value.length > 0) {
+                input.classList.add('has-content');
+            } else {
+                input.classList.remove('has-content');
+            }
+        }
+    </script>
+    <div id="error_message" style="display: none;"></div>
+    <form action="/acapa-inmuebles/conection.php" class="form-container" method="post">
+        <h2 class="form-title">FORMULARIO DE REGISTRO</h2>
+        
+        <div class="form-name-and-lastname">
+            <label for="nombre" class="form--name-and-lastname">Nombres y Apellidos</label>
+        </div>
+        <input type="text" id="nombre" class="placeholder-name-lastname" placeholder="Escriba aquí" name="name_user" oninput="checkInput(this)">
+        
+        <div class="form-cedula">
+            <label for="cedula" class="form--cedula">Cédula</label>
+        </div>
+        <input type="text" id="cedula" class="placeholder-cedula" placeholder="123456789" name="cedula_user" oninput="checkInput(this)">
+        
+        <div class="form-birthdate">
+            <label for="fechaNacimiento" class="form--birthdate">Fecha de Nacimiento</label>
+        </div>
+        <input type="date" class="placeholder-birthdate" id="fechaNacimiento" placeholder="DD/MM/AA" name="birthday_user" oninput="checkInput(this)">
+ 
+        <div class="form-phone">
+            <label for="celular" class="form--phone">Número de Celular</label>
+        </div>
+        <input type="text" id="celular" class="placeholder-phone" placeholder="3000000000" name="phone_user" oninput="checkInput(this)">
+
+        <div class="linea-vertical"></div>
+
+        <div class="form-email">
+            <label for="email" class="form--email">Dirección de correo electrónico</label>
+        </div>
+        <input type="email" id="email" class="placeholder-email" placeholder="example@mail.com" name="mail_user" oninput="checkInput(this)">
+ 
+        <div class="form-payment">
+            <label for="pago" class="form--payment">Añadir método de Pago (Opcional)</label>
+        </div>
+        <input type="text" id="pago" class="placeholder-payment" placeholder="Añadir Tarjeta" name="payment_user" oninput="checkInput(this)">
+ 
+        <div class="form-password">
+            <label for="contrasena" class="form--password">Contraseña</label>
+        </div>
+        <input type="password" id="contrasena" class="placeholder-password" placeholder="Escriba aquí" name="password_user" oninput="checkInput(this)">
+        
+        <div class="form-check-password">
+            <label for="confirmarContrasena" class="form--check-password">Confirmar Contraseña</label>
+        </div>
+        <input type="password" id="confirmarContrasena" class="placeholder-check-password" placeholder="Escriba aquí" name="password_user_check" oninput="checkInput(this)">
+ 
+        <a href="#" class="button-help"><p>¡Nececito Ayuda!</p></a>
+
+        <button type="submit" class="button-register"><p>Registrame</p></a></button>
+
+        <img src="/acapa-inmuebles/assets/icons/Form_Icon_v2.png" alt="Icono Formulario" height="98.4" class="form-icon">
+    </form>
+    
+    <script>
+        function checkInput(input) {
+            if (input.value.length > 0) {
+                input.classList.add('has-content');
+                input.classList.remove('input-error');
+                if (input.id === 'pago') {
+                    input.classList.remove('input-default');
+                }
+            } else {
+                input.classList.remove('has-content');
+                if (input.id !== 'pago') {
+                    input.classList.add('input-error');
+                } else {
+                    input.classList.add('input-default');
+                }
+            }
+        }
+
+        var inputs = document.querySelectorAll('input');
+        inputs.forEach(function(input) {
+            input.addEventListener('focus', function() {
+                this.classList.remove('input-error');
+                this.classList.add('has-content');
+            });
+            input.addEventListener('blur', function() {
+                checkInput(this);
+            });
+        });
+
+
+        function validateForm(e) {
+            e.preventDefault();
+            var inputs = document.querySelectorAll('input');
+            var errorMessage = document.getElementById('error_message');
+
+            var isEmptyFieldExist = false;
+            inputs.forEach(function(input) {
+                if (input.id !== 'pago' && input.value === "") {
+                    input.classList.add('input-error');
+                    isEmptyFieldExist = true;
+                }
+            });
+
+            if (isEmptyFieldExist) {
+                errorMessage.style.display = 'block';
+                errorMessage.innerText = '¡POR FAVOR, RELLENE TODOS LOS CAMPOS REQUERIDOS! :D';
+                errorMessage.style.animation = 'slideDown 0.5s ease-out';
+
+                errorMessage.addEventListener('animationend', function() {
+                    setTimeout(function() {
+                        errorMessage.style.animation = 'slideUp 0.5s ease-out forwards';
+                    }, 3000);
+                });
+            } else {
+                e.target.submit();
+            }
+        }
+
+        document.querySelector('.form-container').addEventListener('submit', validateForm);
+
+
+    </script>
+</body>
+</html>
