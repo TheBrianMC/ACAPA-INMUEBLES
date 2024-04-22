@@ -34,7 +34,8 @@
             $resultado = mysqli_query($enlace, $consulta);
 
             if ($resultado) {
-                echo "¡Los Datos se Agregaron Correctamente!";
+                // echo "¡Los Datos se Agregaron Correctamente!";
+                header('Location: /acapa-inmuebles/index.php');
             } else {
                 echo "¡Ups hubo un error al agregar los Datos!";
             }
